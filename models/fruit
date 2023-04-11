@@ -1,0 +1,7 @@
+const mongoose = require("mongoose")
+const fruitSchema = mongoose.Schema({
+    Name: String,
+    Color: String,
+    Price: Number
+})
+module.exports = mongoose.model("fruit",fruitSchema)

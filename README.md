@@ -9,7 +9,7 @@ Class: Fruits
 Attributes:
 
 Name (string)
-color (string)
+Color (string)
 Price (number)
 
 
