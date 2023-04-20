@@ -17,4 +17,5 @@ router.put('/fruit/:id', fruit_controller.fruit_update_put);
 router.get('/fruit/:id', fruit_controller.fruit_detail);
 // GET request for list of all Costume items.
 router.get('/fruit', fruit_controller.fruit_list);
+router.get('/fruit/:id', fruit_controller.fruit_detail);
 module.exports = router;

@@ -1,0 +1,20 @@
+extends layout
+block content
+ h1= title
+ - let fruitid = toShow._id
+ - let  Name = toShow.Name
+ - let Color = toShow.Color
+ - let Price = toShow.Price
+ div
+ div.row
+ div(class='fruitAttr1 mr-3') fruit ID is:
+ div #{fruitid}
+ div.row
+ div(class='fruitAttr1 mr-3') Name is:
+ div #{fruit_name}
+ div.row
+ div(class='fruitAttr1 mr-3') Color is:
+ div #{Color}
+ div.row
+ div(class='fruitAttr1 mr-3') Price is:
+ div #{Price}
