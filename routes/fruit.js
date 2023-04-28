@@ -2,6 +2,14 @@ var express = require('express');
 const fruit_controlers= require('../controllers/fruit');
 var router = express.Router();
 
+const secured = (req, res, next) => {
+    if (req.user){
+    return next();
+    }
+    req.session.returnTo = req.originalUrl;
+    res.redirect("/login");
+    }
+
 /* GET home page. */
 router.get('/', fruit_controlers.fruit_view_all_Page );
 module.exports = router;
@@ -17,6 +25,8 @@ router.get('/update', fruit_controlers.fruit_update_Page);
 /* GET delete costume page */
 router.get('/delete', fruit_controlers.fruit_delete_Page);
 
+router.get('/update', fruit_controlers.fruit_update_Page);
 
+router.get('/update', secured,fruit_controlers.fruit_update_Page);
 
 module.exports = router;

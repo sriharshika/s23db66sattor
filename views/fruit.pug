@@ -2,17 +2,27 @@ extends layout
 
 block content
   h1= title
-  -const results = [{ Name: "Mango", color: "Yellow",price: 250 },{ Name: "Watermelon", color : "Green",  price: 450 },{ Name: "Orange",  color: "Orange", price: 180 }]
+  <br>
+   - let Create = `dispatch(\"/handbags/create\")`
+   button.btn( class="btn-primary ml-1", onclick= Create) Create
+  - let items = results;
   div(class="container-fluid")
-  div(class="row")
-    each item,index in results
-        div(class="col-sm-2" onclick=`buy(${index})`)
-            
-            p Name : #{item.Name}
-            p Color: #{item.Color}
-            p Price: $#{item.Price}
+    div(class="row")
+      each item,index in items
+        - let destination = `dispatch(\"/fruit/update?id=${item._id}\")`
+        - let detail = `dispatch(\"/handbags/detail?id=${item._id}\")`
+        - let Delete = `dispatch(\"/handbags/delete?id=${item._id}\")`
+        div(class="col-sm-2" class="m-1")
+          h3 #{item.Name}
+          p #{item.Color}
+          p #{item.Price}
+          button.btn( class="btn-primary ml-1", onclick= destination) Update
+          br
+          button.btn( class="btn-primary ml-1", onclick= detail) Details
+          br
+          button.btn( class="btn-primary ml-1", onclick= Delete) Delete
   script.
-    function buy(index)
-    {
-      alert(`You purchased Item ${index+1}`)
+    function dispatch(path){
+      console.log(path);
+      window.location.href=path;
     }

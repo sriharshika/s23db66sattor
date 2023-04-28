@@ -2,6 +2,9 @@ const mongoose = require("mongoose")
 const fruitSchema = mongoose.Schema({
     Name: String,
     Color: String,
-    Price: Number
+    Price:{
+        type:Number,
+        min:50,
+        max:450}
 })
 module.exports = mongoose.model("fruit",fruitSchema)
